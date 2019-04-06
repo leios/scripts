@@ -21,10 +21,10 @@ But this brings up some rather interesting question: what kinds of software do r
 To answer this, we need to know what research code actually looks like... And I'll be honest: it isn't pretty.
 
 ## Research code
-**When software developers look at research code, they often identify  a few primary problems:
-1. The code is not following any standard software development principles
-2. There is no apparent use of version control
-3. There is rarely any testing the results of the code.**
+**When software developers look at research code, they often identify  a few primary problems:**
+1. **The code is not following any standard software development principles**
+2. **There is no apparent use of version control**
+3. **There is rarely any testing the results of the code.**
 
 There are other issues with research code, but I would like to attack each of these one-by-one.
 Keep in mind that the following arguments are from a software development stand-point and might seem a bit harsh to researchers.
@@ -41,8 +41,8 @@ Simply put: scientists write code that works, not code that looks good.
 More than that, they want their answer as quickly as possible, which means they need to minimize runtime and development time.
 Short, dirty code does this and allows scientists to focus on what they actually care about: their research
 
-**Version control is a sticky point for me.
-I feel that most scientists should want to keep track of modifications in their code such that they can keep their lab notebooks easier; however, the argument often goes the other way around.**
+**Version control is a sticky point for me.**
+**I feel that most scientists should want to keep track of modifications in their code such that they can keep their lab notebooks easier; however, the argument often goes the other way around.**
 
 - **Researchers often argue against version control because they are already keeping a lab notebook, so the revision history is not as important. [Lab notebooks exist]**
 - **Researchers often feel that learning a complicated version control system would only hinder their progress [git is hard]**
@@ -50,10 +50,10 @@ I feel that most scientists should want to keep track of modifications in their 
 
 *astonishment*. Honestly, that last point irks me a lot.
 
-**Finally, testing.
-Science is in the business of making sure it's results are correct.
-If research code is producing the wrong results, there is a big, big problem that needs to be fixed immediately.
-That said, most researchers ignore explicit tests on their research code because**
+**Finally, testing.**
+**Science is in the business of making sure it's results are correct.**
+**If research code is producing the wrong results, there is a big, big problem that needs to be fixed immediately.**
+**That said, most researchers ignore explicit tests on their research code because**
 
 - **they are working off of sufficiently advanced scientific software that they trust already and their code is not long enough to warrant testing or inhibits their ability to write clean code [matlab use]**
 - **Their *test* is the end-result against their own physical intuition. As long as they can argue that their solution *should* be correct with the appropriate theory to back those claims up, no further testing is required [physical intuition as a unit test]**
@@ -70,17 +70,17 @@ Again, for the purpose of this video, the difference between research code and s
 Scientific software is meant to be *used by* scientists and extends beyond the specific use-cases of research code.
 
 ## What makes scientific software difficult to write
-**For the most part, scientific software can be split into 3 categories"
-1. packages meant for a particular use
-2. languages that produce research code**
+**For the most part, scientific software can be split into 3 categories:**
+1. **packages meant for a particular use**
+2. **languages that produce research code**
 
-** Neither category is particularly difficult to understand.
-On the one hand you have packages like comsol for physics simulations, igv for genomics, or paraview for visualization.
-These packages are meant to keep the researcher as far away from code as possible and often come with graphical or robust command-line interfaces to keep things as simple as possible.**
+**Neither category is particularly difficult to understand.**
+**On the one hand you have packages like comsol for physics simulations, igv for genomics, or paraview for visualization.**
+**These packages are meant to keep the researcher as far away from code as possible and often come with graphical or robust command-line interfaces to keep things as simple as possible.**
 
-** On the other hand, you have languages like Fortran, CUDA, matlab, julia, labVIEW, numpy and scipy.
-These all allow scientists to write code to solve their problems, but are often specifically meant for number-crunching.
-You wouldn't write an OS in Fortran, and there's a reason for that.**
+**On the other hand, you have languages like Fortran, CUDA, matlab, julia, labVIEW, numpy and scipy.**
+**These all allow scientists to write code to solve their problems, but are often specifically meant for number-crunching.**
+**You wouldn't write an OS in Fortran, and there's a reason for that.**
 
 The main problem with scientific software from a software development perspective is that both of these categories require specific domain-knowledge of either computational mathematics, or whatever area your software is directed toward.
 
@@ -95,8 +95,8 @@ Good scientific software does this.
 ## Some solutions
 
 The fact is that scientific software development is inherently interdisciplinary and requires knowledge of both science and software development.
-**It is also unclear who should be writing and maintaining this software.
-should it be the researchers or separate software development companies?**
+**It is also unclear who should be writing and maintaining this software.**
+**Should it be the researchers or separate software development companies?**
 
 Currently, many important industrial partners are taking up the reign for scientific software development.
 **nvidia and intel are creating new devices for computation, mathworks is developing matlab, kitware is producing paraview...**
