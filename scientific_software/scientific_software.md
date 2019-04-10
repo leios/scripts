@@ -1,118 +1,61 @@
-# The problem with scientific computing
+# The problem with scientific software development
 
 Note: all **bolded sections** will be in voice-over with drawings
 
 ## Scientific software vs research code
-Over the past 7 or 8 years, I have had the privilege of doing research by transforming research code into scientific software, and I would like to talk about...
+When I started this youtube channel a few years ago, I had a rather ambitious goal in mind: to gather a community and research using the lessons learned from open source software development.
+This can only happen if I am 100% honest with you about the research I have been doing and this video intends to set the stage for more technical discussions in the future.
+Basically, over the past 7 or 8 years, I have had the privilege of researching by developing scientific software for various types of simulations in plasma physics, warm dense matter, and superfluids.
+I figure the best place to start is at the start by talking about...
 **The problem with scientific software development... (in 2019)**
 
-To be clear, none of the software I have written has been particularly *popular*. At best, they've been used by dozens of people. As such, if you have more or different experience, please feel free to chat in the comment section.
-**Let's start by drawing a thin line between research code and scientific software**
+To be clear, none of the software I have written has been particularly *popular*. At best, they've been used by dozens of people.
+As such, if you have more or different experience, please feel free to chat in the comment section.
 
-Research code is primarily written for a small subset of problems within the researcher's field of interest.
-**Simply put: a problem appears and code is written to solve that problem. The code is then stored in the researcher's dank Dropbox dungeon for all eternity.**
+First, let me broadly define *scientific software* as any software created for the specific purpose of enabling scientists to perform their research.
+This ranges from research code, written for one task and thrown away into the dark depths of Dropbox, to robust software used by scientists all over the world to perform specific tasks.
+No matter what type of research is being done, software has radically changed the landscape of academia.
 
-On the other hand, scientific software is designed to solve a multitude of problems after several researchers have indicated a need.
-Often times, scientific software is a language or library that is fundamental to writing code for research, but sometimes it is a stand-alone package for genome sequencing or modeling experimental systems.
-**Here, problems arise in research, and software is developed and extended to solve more problems in a similar area**
-Scientific software has a development cycle where more problems create more robust software, but it comes with the cost of development time and maintanence, which most researchers don't have.
+That said, it is currently unclear how scientific software should be written and who should be writing it.
+It is clear that to write proper scientific code, you need domain knowledge in the area you are working in.
+You cannot expect to write a fancy quantum physics solver with no knowledge of quantum physics.
 
-But this brings up some rather interesting question: what kinds of software do researchers actually need?
-To answer this, we need to know what research code actually looks like... And I'll be honest: it isn't pretty.
+On the other hand, if you have no knowledge of software development, you will write some pretty terrible code.
+I don't mean to brag, but I have certainly had scientists brag to me about how they use Dropbox as version control.
+It's honestly quite horrifying at times.
 
-## Research code
-**When software developers look at research code, they often identify  a few primary problems:**
-1. **The code is not following any standard software development principles**
-2. **There is no apparent use of version control**
-3. **There is rarely any testing the results of the code.**
+Proper scientific software development should be a balancing act between science and software, and it should be supported by researchers as a way to do better research.
 
-There are other issues with research code, but I would like to attack each of these one-by-one.
-Keep in mind that the following arguments are from a software development stand-point and might seem a bit harsh to researchers.
-In addition, it is entirely possible to write clean and efficient research code.
-If you are a researcher who does your best to write clean, testable code under version control, this is obviously not discussing your code, in particular; however, I would bet you have a researcher-buddy that trusts their completely unreadable, segfaulty code on dropbox with their life.
+The problem is that modern academia is an incredibly competative environment that heavily relies on publishing highly cited academic articles.
+If you don't publish often, your career will perish.
+Because of this, it is incredibly difficult to make it as an academic at all, and researchers end up working incredibly long hours just to keep themselves afloat.
 
-**The truth is that most scientists were not trained to write code, and because of robust scientific software that has been developed for years,**
+On top of this, until very recently scientific software has not been considered publishable, and thus any researcher doing scientific software development would have to do develop *on top of* an already impossible work schedule.
+Simply put, researchers working to develop good, clean scientific software would be working against the system.
 
-- **their code is not often long enough to warrant crazy amounts of development time. [No formal training]**
-- **Scientists are paid to publish papers, not write code. [Publish or Perish]**
-- **They do not often care about how clean their code looks, so long as it gets the job done. [Limited use]**
+As much as researchers realize the need to well-written, robust scientific software, they most certainly do not want to write it.
+On the other hand, they also don't want to pay for it.
 
-Simply put: scientists write code that works, not code that looks good.
-More than that, they want their answer as quickly as possible, which means they need to minimize runtime and development time.
-Short, dirty code does this and allows scientists to focus on what they actually care about: their research
+Though certain companies, like nvidia, mathworks, and wolfram research have managed to write quality software that researchers all around the world use and pay for, they are the exception, not the rule.
+They also work on general-purpose software that can be used for a wide variety of problems to maximize their userbase.
+For the most part, if researchers in a specific field want scientific software to be written, they just ask untrained grad students or post-docs to write it, which obviously creates poor quality software and dubious results.
 
-**Version control is a sticky point for me.**
-**I feel that most scientists should want to keep track of modifications in their code such that they can keep their lab notebooks easier; however, the argument often goes the other way around.**
+The julia programming language is a rather interesting exception. The language is 100% open-source, is used by researchers all over the world, and has been written by researchers who are trying to radically change the field of scientific computing.
+It would be nice to see more large-scale software research projects like julia to appear in the future, but I don't expect them any time soon.
 
-- **Researchers often argue against version control because they are already keeping a lab notebook, so the revision history is not as important. [Lab notebooks exist]**
-- **Researchers often feel that learning a complicated version control system would only hinder their progress [git is hard]**
-- **And (the kicker), most researchers "already have dropbox for file sharing [Dropbox counts as version control, right?]**
+In the end, the problem is that scientists don't care about software. They just care about the end result...
+but if scientists are in the business of creating correct, replicable results, then the software used to generate those results *must* be considered as a necessary part of scientific process.
+After all, how can we trust a study if it relies entirely on poorly written and buggy code?
 
-*astonishment*. Honestly, that last point irks me a lot.
+In my opinion, if scientific progress relies on software, that software should be written in a clear and open way and reviewed just like the rest of the scientific literature, which is why we recently published our primary codebase, GPUE in the Journal of Open Source Software, which reviews research software and publishes it in a citable journal for the future.
+It's basically just an abstract that links to the code.
+We're working on new publications with some novel features and applications of the software.
+For now, providing an open review of software in an academic setting is a big step forward that we would like to support.
 
-**Finally, testing.**
-**Science is in the business of making sure it's results are correct.**
-**If research code is producing the wrong results, there is a big, big problem that needs to be fixed immediately.**
-**That said, most researchers ignore explicit tests on their research code because**
+In addition, there are several universities around the world that are creating research software engineering sections to aid researchers with the development of good scientific software; however, these units are not often comprised of researchers or people wanting to continue along the traditional academic track to become professors.
+Rather, they are former academics who realized the current academic system is deficient and requires better software development practices.
+They have often made the conscious choice to quit research and instead support it from the outside -- which is still a wonderful and admirable thing to do, but still a step away from where most PhD students want to end up.
 
-- **they are working off of sufficiently advanced scientific software that they trust already and their code is not long enough to warrant testing or inhibits their ability to write clean code [matlab use]**
-- **Their *test* is the end-result against their own physical intuition. As long as they can argue that their solution *should* be correct with the appropriate theory to back those claims up, no further testing is required [physical intuition as a unit test]**
+As it stands, it is difficult to be both a scientific software developer and an academic, and although that is changing, we are far from "professor of scientific computing" being a common title in academia.
 
-As someone who writes scientific software, I can guarantee that a few tests here and there have saved my butt...
-But maybe that's just because I am a miserable excuse for a physicist whose physical intuition is usually incorrect.
-
-The point is that if you directly address scientists about their code, they will always come up with reasons not to change the status quo.
-
-**As a final note: many researcher do not see writing code as fundamental research and discourage their students from learning proper software development techniques because software does not produce high-impact publications [No publication mechanism for research code]**
-
-Now I want to shift gears to scientific software.
-Again, for the purpose of this video, the difference between research code and scientific software is intent.
-Scientific software is meant to be *used by* scientists and extends beyond the specific use-cases of research code.
-
-## What makes scientific software difficult to write
-**For the most part, scientific software can be split into 3 categories:**
-1. **packages meant for a particular use**
-2. **languages that produce research code**
-
-**Neither category is particularly difficult to understand.**
-**On the one hand you have packages like comsol for physics simulations, igv for genomics, or paraview for visualization.**
-**These packages are meant to keep the researcher as far away from code as possible and often come with graphical or robust command-line interfaces to keep things as simple as possible.**
-
-**On the other hand, you have languages like Fortran, CUDA, matlab, julia, labVIEW, numpy and scipy.**
-**These all allow scientists to write code to solve their problems, but are often specifically meant for number-crunching.**
-**You wouldn't write an OS in Fortran, and there's a reason for that.**
-
-The main problem with scientific software from a software development perspective is that both of these categories require specific domain-knowledge of either computational mathematics, or whatever area your software is directed toward.
-
-**In addition, a lot of scientific software is meant to be run on supercomputers, where there is no graphical interface easily available and the code sometimes takes days or weeks to finish -- all while doing nothing more than crunching numbers. [The supercomputer problem**
-
-Because of this, some standard software development practices should be avoided in scientific software development because they come with unintentional overhead.
-Any small delay in function calls could lead to an additional day of runtime, which researchers don't really have time for.
-
-The point is that scientific software is not as easy to write as it might seem, and even if it's not as pretty as it could be, it is meant to be simple, fast, and effective.
-Good scientific software does this.
-
-## Some solutions
-
-The fact is that scientific software development is inherently interdisciplinary and requires knowledge of both science and software development.
-**It is also unclear who should be writing and maintaining this software.**
-**Should it be the researchers or separate software development companies?**
-
-Currently, many important industrial partners are taking up the reign for scientific software development.
-**nvidia and intel are creating new devices for computation, mathworks is developing matlab, kitware is producing paraview...**
-It is much cheaper for scientists to pay for a software license than a developer... So it makes sense that industries take advantage of this.
-
-If researchers are intended to write good, clean scientific software, then researchers need to start respecting scientific software and citing it in their papers -- otherwise, the scientists developing the software cannot advance in their career.
-The problem is that there are few good places to publish and review software, with exception of new initiatives like the journal of open source software, where we published our most recently developed software: GPUE: the graphics processing unit Gross-Pitaevskii equation solver (which we'll certainly talk about more in the future).
-
-In addition, there are large open-source projects like julia that are making impressive strides with a mix of industry funding and academic grants, thus allowing researchers to write the software they need and want.
-
-## Conclusions
-I don't often make discussion-y videos like this, but I feel it is important for scientists to talk about the research they do in an open way to as many people as they can... and I intend to do just that, so expect videos on GPU computing, superfluids, chaos, guage fields, compressive sensing, and potentially optimal control or molecular dynamics.
-
-I am also still working on algorithm archive revisions and will let you guys know as new content comes out.
-My hope is to make a new video every time a new paper or chapter is published, but there might be some delays here and there... After all, I'm still in the middle of my thesis.
-
-Anyway, we are back to daily streams on twitch from 5-7AM JST every day and we are also doing additional research streams where we talk about GPU computing and superfluids from 9-12 AM JST when I can.
-Thanks again for watching and let me know your thoughts in the comment section below!
-Peace!
+I genuinely believe that researchers should do whatever possible to engage the public with their researsh, so I will be making videos soon about various research topics, most of which involve this codebase, and I have started to do GPUE development streams on twitch when possible, so please feel free to tune in then and ask questions or talk about the future of scientific software development.
