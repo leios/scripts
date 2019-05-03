@@ -51,14 +51,10 @@ In addition, it should be citable so it can contribute towards a researcher's ca
 **As it stands, it is difficult to be both a scientific software developer and an academic, and there is a big question about whether scientific software is novel enough to be published in the first place.**
 **After all, it's just a mix of known methods and software development principles. Is that novel?**
 **I would argue that yes, it is.**
-**Most research is just a mix of known methods.**
+**Most research is just a mix of known methods to create something new.**
 **In my opinion, if new software allows for new research to be done, the software _is_ novel and should be published.**
 Sure, some research software may not be as important as other software, but all research is that way.
 I figure we can just let the citation count dictate how impactful the software is.
-
-**Another big problem is that computation doesn't really fit the current model of theory and experimentation that many scientists know and love, but we are in a new era.**
-If computation is already a necessary component of research, we need to make room for it.
-**There's no reason to force research into ancient paradigms that no longer fit.** (draw x and walk away)
 
 I genuinely believe that researchers should do whatever possible to engage the public with their research, so I will be making videos soon about various research topics, most of which involve GPUE, the codebase I briefly mentioned before.
 I have also started to do GPUE development streams on twitch when possible, so please feel free to tune in then and ask questions or even help out with the development!
