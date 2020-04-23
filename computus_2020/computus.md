@@ -34,7 +34,7 @@ In essence, the method is split into 2 steps:
 2. Finding the following Sunday
 
 Let's start with the full moon bit.
-This involves keeping track of two incredibly different calendar systems, the solar calendar (also called the Gregorian calendar after Pope Gregory XIII) and the lunar calendar.
+This involves keeping track of two incredibly different calendar systems, the solar calendar (also called the Gregorian calendar after Pope Gregory XIII), which corresponds to the time it takes for the Earth to revolve around the Sun and the lunar calendar, which corresponds tot he time it takes for the Moon to revolve around the Earth.
 
 Most people know the Gregorian calendar fairly well.
 It's what we use every day.
@@ -61,7 +61,7 @@ It will actually take 19 years for the lunar phase to re-synchronize to be in th
 This 19 year cycle is known as the Metonic cycle.
 
 At this point, we have all the necessary pieces to the puzzle to find the first full moon of spring.
-We would need to figure out where we are on the Metonic cycle and offset ourselves accordingly and all the explicit expressions can be found in the AAA.
+We would need to figure out where we are on the Metonic cycle and offset ourselves accordingly and if you want to see this puzzle put together, all the explicit expressions can be found in the AAA.
 
 All that's left is determining the next Sunday, which is a bit more straightforward than the previous calculation once you realize a simple trait of the Gregorian calendar: days of the week shift by one each year, with exception of leap years.
 
