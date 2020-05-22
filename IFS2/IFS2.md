@@ -5,7 +5,7 @@ The process continued until the Sierpinski triangle was clearly visible.
 I want to talk about this animation, in particular, because we *may have* massively over-engineered the problem for fun.
 Firstly, let's look at the problem again from the perspective of the trees we are generating.
 Every time a new generation of children are born, we increase the number of points in the simulation by 3^{generation number}, thus the number of points grows exponentially.
-If each point holds a tuple of the (x,y) location for each point, then the memory footprint also grows exponentially.
+If each node holds a tuple of the (x,y) location for each point, then the memory footprint also grows exponentially.
 The simplest way of creating this animation would be to fully generate the tree we want in the end (in this case up to 4 generations), and then do a Breadth-First Search over the elements.
 
 This would definitely work for the purposes of this video.
@@ -33,24 +33,25 @@ This means that instead of having to keep a tree, I just need to keep a trit str
 So that's what we did.
 
 We ended up having to do some fancy bit logic to get our bits to act as trits, but it all worked out in the end.
-This was largely developed by Kroppeb on stream.
-ADD MORE!
+The final circuit is shown here and was largely developed by Kroppeb on stream.
 
 After we created a trit number system for the triangle, we then did the same for the square to create this animation and called it quits.
-As a note, this animation is way, way less interesting than the triangle.
-Where is the self-similarity?
-
-It's there, but we have to restrict it a bit before going further, so it's a topic for another video for now.
+In general, if you use a bijective, base n number system, you should be able to do a BFS of a full n-ary tree.
+The neat thing about this particular case is that now the memory footprint grows linearly with the number of levels, not exponentially with the number of elements.
+Admittedly, the computation required for each point goes way, way up, but that'sa fair price to pay for minimizing memory.
+As a note, I *think* this is the minimum amount of space necessary to do a BFS of an n-ary tree without resorting to DFS shenanigans.
+Feel free to discuss this further in the comment section or on discord!
 
 I very rarely show my process here on YouTube and instead leave that for twitch.
 If you are interested in more videos like this, please let me know!
 This particular animation incorporated Tree Traversal, Huffman Encoding, bit logic, and Iterated Function Systems, which are all topics we have covered in the past and are both on YouTube and the algorithm archive.
-We have done a bunch of tricky animations over the years, which have lead to some pretty interesting discussions and community interactions, so I have a lot of material to work with here.
+We have done a bunch of tricky animations over the years, which have lead to some pretty interesting discussions and community interactions, so I have a lot of material to work with here if you want more videos of this type.
 
 Anyway, that's all for now.
 Twitch, discord and GitHub sponsors links are all in the description.
 I decided for GitHub sponsors instead of Patreon for 2 reasons:
 1. Github will match any contributions, so if you pledge $1 to the algorithm archive, you are actually providing $2.
 2. This is a programming project and I want to reflect that and support the open source ecosystem in the best way I can.
+
 I am not asking you to donate, but if you like the content, please consider it!
 Thanks again for watching, and I'll see you next time!
