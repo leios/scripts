@@ -1,0 +1,76 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{graphicx}
+
+\usetheme{default}
+
+\usecolortheme[named=white]{structure}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{background canvas}{bg=black}
+
+\setbeamertemplate{itemize item}{\color{white}$\bullet$}
+
+\setbeamertemplate{frametitle}[default][center]
+
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+\begin{frame}
+\frametitle{Why is programming hard?}
+\begin{columns}
+
+\pause
+\column{0.5\textwidth}
+\center \Huge{Writing code}
+
+\normalsize Understanding programming logic
+
+\includegraphics[width=0.6\textwidth]{writing.png}
+\column{0.5\textwidth}
+
+\pause
+\center \Huge{Running code}
+
+\normalsize ``It works on my machine''
+
+\includegraphics[width=0.6\textwidth]{running.png}
+\end{columns}
+
+\pause
+\vspace{0.25cm}
+\center Different programming environments make
+
+\center running code easier for different people
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Programming environments}
+\begin{enumerate}
+\onslide<2-> \item Text Editors
+\begin{itemize}
+\onslide<5->
+\item Simplest set-up
+\item Vim, Nano, Notepad++
+\end{itemize}
+\onslide<3->\item Integrated Development Environments
+\begin{itemize}
+\onslide<6->
+\item Loads of features to help out
+\item VScode, Atom*
+\end{itemize}
+\onslide<4->\item Notebooks
+\begin{itemize}
+\onslide<7->
+\item Great for classes
+\item Pluto.jl, Jupyter
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\center \Huge{Different environments work better for different people!}
+\end{frame}
+
+\end{document} 

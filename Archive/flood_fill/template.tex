@@ -1,0 +1,186 @@
+\documentclass{beamer}
+
+\usepackage{graphicx}
+\usepackage{listings}
+%\usepackage{media9}
+\usepackage{multimedia}
+
+\usetheme{default}
+
+\usecolortheme[named=white]{structure}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{background canvas}{bg=black}
+
+\setbeamertemplate{itemize item}{\color{white}$\bullet$}
+
+\setbeamertemplate{frametitle}[default][center]
+
+\setbeamertemplate{navigation symbols}{}
+
+\lstdefinelanguage{Julia}%
+  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+      end,export,false,for,function,immutable,import,importall,if,in,%
+      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
+      using,while},%
+   basicstyle=\tiny,
+   sensitive=true,%
+   morecomment=[l]\#,%
+   morecomment=[n]{\#=}{=\#},%
+   morestring=[s]{"}{"},%
+   morestring=[m]{'}{'},%
+}[keywords,comments,strings]%
+
+\lstset{%
+    language         = Julia,
+    %basicstyle       = \ttfamily,
+    basicstyle       = \footnotesize\ttfamily,
+    keywordstyle     = \bfseries\color{green},
+    stringstyle      = \color{magenta},
+    commentstyle     = \color{green},
+    showstringspaces = false,
+}
+
+\begin{document}
+
+\begin{frame}
+\center \Huge{I want to talk about an algorithm...}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+
+\onslide<1->
+\column{0.5\textwidth}
+\center Tracking Vortices
+\includegraphics[width=0.75\textwidth]{vortex_tracking.png}
+
+\column{0.5\textwidth}
+
+\onslide<2->
+
+\center Terminal Game
+\includegraphics[width=\textwidth]{terminal_game.png}
+
+\vspace{0.5cm}
+
+\onslide<3->
+\center Mine Sweeper
+
+\includegraphics[width=\textwidth]{minesweep.png}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\center \Huge Flood Fill
+\end{frame}
+
+\begin{frame}
+\frametitle{Bucket Fill}
+\end{frame}
+
+\begin{frame}
+\frametitle{How to Flood Fill}
+\center 2 parts to the method
+
+\begin{columns}
+\column{0.5\textwidth}
+\onslide<2->
+\center Finding Domain
+\column{0.5\textwidth}
+\onslide<3->
+\center Filling Domain
+\end{columns}
+\begin{columns}
+\column{0.5\textwidth}
+\onslide<4->
+\includegraphics[width=\textwidth]{simple_circle.png}
+\column{0.5\textwidth}
+\onslide<5->
+\vspace{-0.5cm}
+\center \includegraphics[width=0.85\textwidth]{grid_1.png}
+\end{columns}
+\onslide<6->
+\center depth and breadth first traversal
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Depth-first Traversal}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{lstlisting}
+function DFS_recursive(n::Node)
+    println(n.ID)
+
+    for child in n.children
+        DFS_recursive(child)
+    end
+end
+\end{lstlisting}
+\column{0.4\textwidth}
+\movie[autostart]{\includegraphics[width=\textwidth]{tree.png}}{DFS.mp4}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Depth-first Flood Fill}
+\center \movie[autostart]{\includegraphics[width=0.75\textwidth]{unfilled.png}}{recurse_animation.mp4}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Breadth-first Traversal}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{lstlisting}
+function BFS_queue(n::Node)
+    q = Queue{Node}()
+    enqueue!(q, n)
+
+    while(length(q) > 0)
+        println(front(q).ID)
+        temp = dequeue!(q)
+        for child in temp.children
+            enqueue!(q, child)
+        end
+    end
+end
+\end{lstlisting}
+\column{0.4\textwidth}
+\movie[autostart]{\includegraphics[width=\textwidth]{tree.png}}{BFS.mp4}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Breadth-first Flood Fill}
+\center \movie[autostart]{\includegraphics[width=0.75\textwidth]{unfilled.png}}{queue_animation.mp4}
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimizing Breadth First}
+\begin{overprint}
+\onslide<1> \center \includegraphics[width=0.75\textwidth]{grid_1.png}
+\onslide<2> \center \includegraphics[width=0.75\textwidth]{grid_2.png}
+\onslide<3> \center \includegraphics[width=0.75\textwidth]{grid_3.png}
+\onslide<4> \center \includegraphics[width=0.75\textwidth]{grid_4.png}
+\onslide<5> \center \includegraphics[width=0.75\textwidth]{grid_5.png}
+\onslide<6> \center \includegraphics[width=0.75\textwidth]{grid_6.png}
+\end{overprint}
+\end{frame}
+
+\begin{frame}
+\frametitle{Two methods, same result}
+\begin{columns}
+\column{0.5\textwidth}
+\movie[autostart]{\includegraphics[width=\textwidth]{unfilled.png}}{recurse_animation.mp4}
+\column{0.5\textwidth}
+\movie[autostart]{\includegraphics[width=\textwidth]{unfilled.png}}{queue_animation.mp4}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Applications}
+\center \movie[autostart]{\includegraphics[width=0.75\textwidth]{maze.png}}{maze.mp4}
+\end{frame}
+
+\end{document} 

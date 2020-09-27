@@ -47,7 +47,7 @@
 \item BLAS, FFTW, LAPACK
 \end{itemize}
 \onslide<3->
-\item Sofware frameworks and languages
+\item Software frameworks and languages
 \begin{itemize}
 \item Julia, NumPy, ROOT
 \end{itemize}

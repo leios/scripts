@@ -1,0 +1,20 @@
+\frametitle{Breadth-first Traversal}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{lstlisting}
+function BFS_queue(n::Node)
+    q = Queue{Node}()
+    enqueue!(q, n)
+
+    while(length(q) > 0)
+        println(front(q).ID)
+        temp = dequeue!(q)
+        for child in temp.children
+            enqueue!(q, child)
+        end
+    end
+end
+\end{lstlisting}
+\column{0.4\textwidth}
+\movie[autostart]{\includegraphics[width=\textwidth]{tree.png}}{BFS.mp4}
+\end{columns}
