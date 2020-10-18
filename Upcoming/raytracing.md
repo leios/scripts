@@ -1,6 +1,6 @@
-Today, we are going to begin our journey into raytracing, which is a method used by game designers and 3D animators to create high-quality animations and visual effects.
+**Today, we are going to begin our journey into raytracing, which is a method used by game designers and 3D animators to create high-quality animations and visual effects.
 Though we will end next week with the ability to make images like these, we will focus on the prerequisites this week.
-In particular, we will talk about how raytracing models physical light and create a simpe two-dimensional simulation of refraction through a lens and reflaction off a mirror.
+In particular, we will talk about how raytracing models physical light and create a simpe two-dimensional simulation of refraction through a lens and reflaction off a mirror.**
 
 So, let's get started by talking a bit about light. *Turn on Lamp*
 Firstly, the white light from this lamp is a composite of all the colors of the rainbow.
@@ -31,10 +31,10 @@ Both of these will just be vectors with an x and y element inside of them.
 In addition, I keep another metric to help me understand the speed at which the ray is moving.
 I am going to call this metric an index of refraction or ior in code... but there is a lot of physics hidden in this value that we should probably talk about.
 
-Here's the deal: Light is actually really, really weird, and some of you might have heard that light is simultaneously a wave and a particale and that light moves the same speed regardless of how fast we are moving.
+**Here's the deal: Light is actually really, really weird, and some of you might have heard that light is simultaneously a wave and a particale and that light moves the same speed regardless of how fast we are moving.
 Both of these are 100% correct; however, this lecture lives in the world of computer graphics.
 We do not need to care about the wave-like nature of light.
-We also assume that our reference frame is not changing.
+We also assume that our reference frame is not changing.**
 
 For us, the speed of light is 3.0e8 m/s... Assuming there is nothing around it.
 If light moves inside of something else, like water, for instance, it will be a significant amount slower.
@@ -65,19 +65,19 @@ This allows me to easily plot it at the end to create this image.
 It's not much to look at now, but don't worry... It gets better.
 
 Now that we have light propagation out of the way, we need to implement the concept of a mirror (show slide with 1 crossed out).
-**I'll be honest, most people probably have an intuitive grasp for what mirros do. Light comes from some source, hits the mirror, and then is reflected right into the lens of the camera."
+**I'll be honest, most people probably have an intuitive grasp for what mirros do. Light comes from some source, hits the mirror, and then is reflected right into the lens of the camera.**
 
-If we were to animate this, we would see light hitting the mirror and then bouncing of like so.
-Of course, to put this into code, we need a more mathematical definition, so let's draw a line down the center.
+If we draw this, we would see light hitting the mirror and then bouncing of like so.
+Of course, to put this into code, we need a more rigorous definition, so let's draw a line down the center.
 
-Let's constrain our mirror to be lying horizontally on a table. No matter what ray of light we send onto the mirror, the reflected ray will be moving at the same speed in the x direction, but the opposite speed in the y.
+Also, let's constrain our mirror to be lying horizontally on a table. No matter what ray of light we send onto the mirror, the reflected ray will be moving at the same speed in the x direction, but the opposite speed in the y.
 
 If the mirror is hung on a wall, the opposite is true. The ray will move the same speed in y, but the opposite speed in x.
 
-in both cases, we see that the angle of reflection is always the same angle as it hit the mirror with.
+In both cases, we see that the angle of reflection is always the same angle as it hit the mirror with.
 This means as long as we can find that angle, we should be able to find the new, reflected direction, by first finding the component of the velocity we want to flip (cos(theta)*v), and then subtracting it twice to the appropriate direction (v.y -= 2cos(theta)*v).
-Note here that the projected vector is pointing perpendicularly outward from the mirror on the line we drew before.
-This is why that vector is particularly important and given a special name: the normal.
+Note here that this argument relies a bit on the projected vector pointing perpendicularly outward from the mirror.
+This is why that vector is important and given a special name: the normal.
 
 Ok. It's kinda a weird honor to be called the normal, but it does hold particular importance. Any time we talk about a normal vector, it is simply a vector pointing directly outward from a surface.
 
@@ -144,7 +144,7 @@ where
 
 is a description of the difference between the incoming ray's projection on the normal and the outgoing ray's projection on the normal.
 
-The issue here is that there are not 2 unknowns: l_{water} and theta__{water}, so we need to find some way to get rid of the second theta term.
+The issue here is that there are now 2 unknowns: l_{water} and theta_{water}, so we need to find some way to get rid of the second theta term.
 
 Using Snell's law, we know that
 
@@ -167,7 +167,7 @@ The issue is that dot products are usually defined in terms of cosines, like so.
 |l_{air}||n|cos(theta_{air}) = dot(l_{air}, n)
 |l_{water}||n|cos(theta_{water}) = dot(l_{water}, n)
 
-Note that because l and n are normalized, they can be ignored.
+Note that because l and n are normalized, their magnitude is just 1, so they can be ignored.
 
 So we'll want that cos equation to also be in terms of cosines, so
 
@@ -197,14 +197,14 @@ Essentially, if the cos(theta_{water}) term is irrational or 0, the light will r
 
 That aside, here it is:
 
-With this, we should be able to send our rays of light towards a water surface and see them refract.
+With this, we should be able to send our rays of light towards the surface of water and see them refract.
 
 Finally, there is only one last thing to do: introduce lenses.
 
 For the purposes of this lecture, we will only target spherical lenses... so think of a giant ball of glass or something.
-This will work identically to the water.
+This will work almost identically to the water, except that the refractive index is usually ~1.5 instead of 1.33.
 
-We need to find the normal to the surface and refract at that boundary.
+Like before, we need to find the normal to the surface and refract at that boundary.
 Luckily, the normal is easy to find for a sphere (which is part of the reason we are confining this discussion to this shape). It's just the ray's position - the lens's origin after normalization.
 
 There is only one small hitch... What if you are leaving the sphere instead of entering it? Well, in this case, the normal will just go in the opposite direction, so we use the dot product to determine if the normal and light vector are going in opposite directions, and if so, we flip the sign of the returned normal.
@@ -213,9 +213,9 @@ That's it.
 
 When we put the lens in the simulation, we should be able to see spherical aberration, which is a semi-focusing event on the far side.
 
-Now, this is still very far from the cool 3d renders you can find online, but to get there, we need to talk about event-driven simulations on thursday. In addition, we will be introducing some naive parallelism later today, which will be used in the next section.
+**Now, this is still very far from the cool 3d renders you can find online, but to get there, we need to talk about event-driven simulations on Thursday. In addition, we will be introducing some naive parallelism later today, which will be used in the next section.
 
-Again, the homework for this week will be priducing this image I have here with an event-driven simulation, and next week we will talk about 3D, color, recursion, and a whole lot more.
+Again, the homework for this week will be priducing this image I have here with an event-driven simulation, and next week we will talk about 3D, color, recursion, and a whole lot more.**
 
 Thanks again for watching, and I'll see you next time!
 
